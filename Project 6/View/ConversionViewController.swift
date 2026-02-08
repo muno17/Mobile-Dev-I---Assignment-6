@@ -20,19 +20,28 @@ class ConversionViewController: UIViewController {
     
     @IBOutlet weak var usdLabel: UILabel!
     
+    // variables to receive amounts
     var usd = 0
     var peso = 0.00
     var euro = 0.00
     var pound = 0.00
     var yen = 0.00
     
+    // variables to receive states
+    var showPeso = false
+    var showEuro = false
+    var showPound = false
+    var showYen = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        usdLabel.text = "$\(usd)"
-        pesoAmount.text = "$\(peso)"
-        euroAmount.text = "€\(euro)"
-        poundAmount.text = "£\(pound)"
-        yenAmount.text = "¥\(yen)"
+        usdLabel.text = String("Converting\n$\(usd) USD")
+        
+        // show two decimal places only
+        pesoAmount.text = String(format: "$%.2f", peso)
+        euroAmount.text = String(format: "€%.2f", euro)
+        poundAmount.text = String(format: "£%.2f", pound)
+        yenAmount.text = String(format: "¥%.2f", yen)
         
         showCurrencies()
         
@@ -41,29 +50,10 @@ class ConversionViewController: UIViewController {
     
     // show/hide currencies if they have been selected
     func showCurrencies() {
-        if peso == 0.00 {
-            pesoStackView.isHidden = true
-        } else {
-            pesoStackView.isHidden = false
-        }
-        
-        if euro == 0.00 {
-            euroStackView.isHidden = true
-        } else {
-            euroStackView.isHidden = false
-        }
-        
-        if pound == 0.00 {
-            poundStackView.isHidden = true
-        } else {
-            poundStackView.isHidden = false
-        }
-        
-        if yen == 0.00 {
-            yenStackView.isHidden = true
-        } else {
-            yenStackView.isHidden = false
-        }
+        pesoStackView.isHidden = !showPeso
+        euroStackView.isHidden = !showEuro
+        poundStackView.isHidden = !showPound
+        yenStackView.isHidden = !showYen
     }
     
 
