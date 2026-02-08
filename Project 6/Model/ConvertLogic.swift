@@ -13,13 +13,13 @@ struct ConvertLogic {
     var pound = false;
     var yen = false;
     
-    var usd = 0.00;
+    var usd = 0;
     var cpeso = 0.00;
     var ceuro = 0.00;
     var cpound = 0.00;
     var cyen = 0.00;
     
-    mutating func setUsd(_ val: Double) {
+    mutating func setUsd(_ val: Int) {
         usd = val
     }
     
@@ -39,22 +39,49 @@ struct ConvertLogic {
         yen = val
     }
     
+   func getUsd() -> Int {
+        return usd
+    }
+    
+    func getPeso() -> Double {
+        return cpeso
+    }
+    
+    func getEuro() -> Double {
+        return ceuro
+    }
+    
+    func getPound() -> Double {
+        return cpound
+    }
+    
+    func getYen() -> Double {
+        return cyen
+    }
     
     mutating func calculate() {
         if (peso) {
-            cpeso = usd * 3700
+            cpeso = Double(usd) * 3700
+        } else {
+            cpeso = 0.00
         }
         
         if (euro) {
-            ceuro = usd * 0.85
+            ceuro = Double(usd) * 0.85
+        } else {
+            ceuro = 0.00
         }
         
         if (pound) {
-            cpound = usd * 0.73
+            cpound = Double(usd) * 0.73
+        } else {
+            cpound = 0.00
         }
         
         if (yen) {
-            cyen = usd * 157
+            cyen = Double(usd) * 157
+        } else {
+            cyen = 0.00
         }
     }
 }
