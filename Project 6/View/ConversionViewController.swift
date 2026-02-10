@@ -27,7 +27,7 @@ class ConversionViewController: UIViewController {
     var pound = 0.00
     var yen = 0.00
     
-    // variables to receive states
+    // variables to receive visibility states
     var showPeso = false
     var showEuro = false
     var showPound = false
@@ -37,7 +37,7 @@ class ConversionViewController: UIViewController {
         super.viewDidLoad()
         usdLabel.text = String("Converting\n$\(usd) USD")
         
-        // show two decimal places only
+        // show two decimal places only and currency symbol
         pesoAmount.text = String(format: "$%.2f", peso)
         euroAmount.text = String(format: "€%.2f", euro)
         poundAmount.text = String(format: "£%.2f", pound)

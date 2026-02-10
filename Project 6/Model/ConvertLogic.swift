@@ -59,29 +59,32 @@ struct ConvertLogic {
         return cyen
     }
     
+    // conversion amounts for 1 usd as of 2/8/26
     mutating func calculate() {
-        if (peso) {
+        if peso {
             cpeso = Double(usd) * 3700
         } else {
             cpeso = 0.00
         }
         
-        if (euro) {
+        if euro {
             ceuro = Double(usd) * 0.85
         } else {
             ceuro = 0.00
         }
         
-        if (pound) {
+        if pound {
             cpound = Double(usd) * 0.73
         } else {
             cpound = 0.00
         }
         
-        if (yen) {
+        if yen {
             cyen = Double(usd) * 157
         } else {
             cyen = 0.00
         }
     }
+    
+    
 }

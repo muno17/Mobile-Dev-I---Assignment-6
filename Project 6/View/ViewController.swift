@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var usdAmount: UITextField!
     
+    @IBOutlet weak var ValidInteger: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -41,13 +43,19 @@ class ViewController: UIViewController {
     @IBAction func convert(_ sender: UIButton) {
         // if the amount being passed exists, try to convert to an int
         // if value is not an integer, no conversion will take place and usd will = 0
+        // the amount text field is set up to pull up a number pad so only numbers should be passed
         let input = usdAmount.text ?? ""
         if let amount = Int(input) {
+            ValidInteger.isHidden = true;
+            
             convertLogic.setUsd(amount)
             convertLogic.calculate()
+            
+            // only segue if the input is an int
+            self.performSegue(withIdentifier: "toConversion", sender: self)
+        } else {
+            ValidInteger.isHidden = false;
         }
-        
-        self.performSegue(withIdentifier: "toConversion", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
